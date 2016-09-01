@@ -5,8 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows.Documents;
-using System.Drawing.Design;
-using System.Drawing;
+using System.Windows.Media;
+using System.Windows;
 
 
 
@@ -29,7 +29,7 @@ namespace BGC_User_Automation
                     rangeOfText.Text = text;
                     rangeOfText.ApplyPropertyValue(TextElement.ForegroundProperty, color);
                     if (bold)
-                        rangeOfText.ApplyPropertyValue(TextElement.ForegroundProperty, FontStyle.Bold);
+                        rangeOfText.ApplyPropertyValue(TextElement.FontWeightProperty, FontWeights.Bold);
                     //box.AppendText(text);
                 }));
             }
@@ -39,7 +39,7 @@ namespace BGC_User_Automation
                 rangeOfText.Text = text;
                 rangeOfText.ApplyPropertyValue(TextElement.ForegroundProperty, color);
                 if (bold)
-                    rangeOfText.ApplyPropertyValue(TextElement.ForegroundProperty, FontStyle.Bold);
+                    rangeOfText.ApplyPropertyValue(TextElement.FontWeightProperty,FontWeights.Bold);
             }
         }
 

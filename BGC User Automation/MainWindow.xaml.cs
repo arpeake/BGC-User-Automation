@@ -41,39 +41,44 @@ namespace BGC_User_Automation
         
         private void Init(MainWindow m)
         {
-            lblStatusBar.UpdateStatusLabel("Looking up and pinging Domain");
-            WriteLogs("Application Init Starting");
-            string adTest = String.Empty;
-            ADStuff ads = new ADStuff();            
-            adTest = ads.ADTest(m);
-            DCMGToolbox.ActiveDirectory ad = new ActiveDirectory();
-
-            string[] split = adTest.Split(new string[] { "||" },StringSplitOptions.None);
-            string pingres = split[0];
-            string domain = split[1];            
-
-            txtDomain.UpdateTextBoxTS(pingres);
-
-            if (pingres.ToUpper().Trim() == "PINGABLE")
+            try
             {
-                txtDomain.UpdateTextBoxTS(domain);
-                txtPingable.UpdateTextBoxTS("True");
-                //build combobox        
-                //"LDAP://DC=YourCompany,DC=com"
-                List<string> l = new List<string>();
-                string dn = ad.ConvertStringDomainToDN(domain.Trim());
-                l = ad.GetOUList(dn);
-                cbxOUs.UpdateCBXDatasource(l);                
-            }
+                lblStatusBar.UpdateStatusLabel("Looking up and pinging Domain");
+                WriteLogs("Application Init Starting");
+                string adTest = String.Empty;
+                ADStuff ads = new ADStuff();
+                adTest = ads.ADTest(m);
+                DCMGToolbox.ActiveDirectory ad = new ActiveDirectory();
 
-            if (domain.ToUpper().Trim() == "NA")
+                string[] split = adTest.Split(new string[] { "||" }, StringSplitOptions.None);
+                string pingres = split[0];
+                string domain = split[1];
+
+                txtDomain.UpdateTextBoxTS(pingres);
+
+                if (pingres.ToUpper().Trim() == "PINGABLE")
+                {
+                    txtDomain.UpdateTextBoxTS(domain);
+                    txtPingable.UpdateTextBoxTS("True");
+                    //build combobox        
+                    //"LDAP://DC=YourCompany,DC=com"
+                    List<string> l = new List<string>();
+                    string dn = ad.ConvertStringDomainToDN(domain.Trim());
+                    l = ad.GetOUList(dn);
+                    cbxOUs.UpdateCBXDatasource(l);
+                }
+
+                if (domain.ToUpper().Trim() == "NA")
+                {
+                    txtDomain.UpdateTextBoxTS("No Domain Found");
+                    txtPingable.UpdateTextBoxTS("False");
+                }
+                lblStatusBar.UpdateStatusLabel("Domain lookup task completed.");
+            }
+            catch(Exception ex)
             {
-                txtDomain.UpdateTextBoxTS("No Domain Found");
-                txtPingable.UpdateTextBoxTS("False");
+                WriteLogs(ex.Message, Logging.LogType.Critical);
             }
-            lblStatusBar.UpdateStatusLabel("Domain lookup task completed.");
-
-            
         }
 
         public void WriteLogs(string logEntry,Logging.LogType lt = Logging.LogType.Message)
