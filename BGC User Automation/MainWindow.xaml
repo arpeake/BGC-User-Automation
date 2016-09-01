@@ -35,7 +35,7 @@
                     <CheckBox x:Name="chkPwdNeverExpires" Content="Password Never Expires" HorizontalAlignment="Right" Margin="0,74.88,83.562,0" VerticalAlignment="Top" d:LayoutOverrides="HorizontalAlignment"/>
                     <CheckBox x:Name="chkChangePWOnLogin" Content="Change Password On Next Logon" HorizontalAlignment="Right" Margin="0,94.978,30.828,0" VerticalAlignment="Top" d:LayoutOverrides="HorizontalAlignment"/>
                     <CheckBox x:Name="chkCannotChangePW" Content="User Cannot Change Password" HorizontalAlignment="Right" Margin="0,115.076,46.347,128.238" d:LayoutOverrides="Height"/>
-                    <ComboBox x:Name="comboBox" HorizontalAlignment="Right" Margin="0,0,10,101.278" VerticalAlignment="Bottom" Width="218.189"/>
+                    <ComboBox x:Name="cbxOUs" HorizontalAlignment="Right" Margin="0,0,10,101.278" VerticalAlignment="Bottom" Width="218.189"/>
                 </Grid>
             </TabItem>
             <TabItem x:Name="tabDebug" Header="Debugging">

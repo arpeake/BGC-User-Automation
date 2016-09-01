@@ -116,8 +116,7 @@ namespace BGC_User_Automation
             bool passOnLogon = chkChangePWOnLogin.IsChecked.Value;
             bool passNeverExpires = chkPwdNeverExpires.IsChecked.Value;
             bool cannotChangePW = chkCannotChangePW.IsChecked.Value;
-            string domain = txtDomain.Text;
-            string DN = a.GetDomainDN(domain);
+            string domain = txtDomain.Text;            
             List<string> l = new List<string>();
 
             
@@ -132,9 +131,10 @@ namespace BGC_User_Automation
                     {
                         //a.CreateAdUser(uName, fName, lName, pWord, email, passNeverExpires, cannotChangePW, passOnLogon);
                         //"LDAP://DC=YourCompany,DC=com"
-                        //l = ad.GetOUList("LDAP://DC=dcmgllc,DC=local");
-                        //string OUCsv = string.Join(",", l.ToArray());
-                        MessageBox.Show(DN);
+                        l = ad.GetOUList("LDAP://DC=dcmgllc,DC=local");
+                        cbxOUs.ItemsSource = l;
+                        string OUCsv = string.Join(",", l.ToArray());
+                        MessageBox.Show(OUCsv);
                     }
                 }
                 else
