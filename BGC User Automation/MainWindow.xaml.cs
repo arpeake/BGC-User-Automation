@@ -106,7 +106,7 @@ namespace BGC_User_Automation
         private void btnNewUser_Click(object sender, RoutedEventArgs e)
         {
             ADStuff a = new ADStuff();
-
+            DCMGToolbox.ActiveDirectory ad = new ActiveDirectory();
 
             string fName = txtFirstName.Text;
             string lName = txtLastName.Text;
@@ -117,9 +117,10 @@ namespace BGC_User_Automation
             bool passNeverExpires = chkPwdNeverExpires.IsChecked.Value;
             bool cannotChangePW = chkCannotChangePW.IsChecked.Value;
             string domain = txtDomain.Text;
-            string DN = a.GetDomainDN(domain);
+            //string DN = a.GetDomainDN(domain);
+            List<string> l = new List<string>();
 
-            MessageBox.Show(DN);
+            
             if (pbPassword.Password == pbConfirm.Password)
             {
                 pWord = pbConfirm.Password;
@@ -130,7 +131,9 @@ namespace BGC_User_Automation
                     if (mb == MessageBoxResult.OK)
                     {
                         //a.CreateAdUser(uName, fName, lName, pWord, email, passNeverExpires, cannotChangePW, passOnLogon);
-                        MessageBox.Show(DN);
+                        //"LDAP://DC=YourCompany,DC=com"
+                        l = ad.GetOUList("LDAP://DC=dcmgllc,DC=local");
+                        MessageBox.Show(l.ToString());
                     }
                 }
                 else
