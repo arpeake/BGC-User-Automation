@@ -117,14 +117,14 @@ namespace BGC_User_Automation
             bool passNeverExpires = chkPwdNeverExpires.IsChecked.Value;
             bool cannotChangePW = chkCannotChangePW.IsChecked.Value;
             string domain = txtDomain.Text;
-            //string DN = a.GetDomainDN(domain);
+            string DN = a.GetDomainDN(domain);
             List<string> l = new List<string>();
 
             
             if (pbPassword.Password == pbConfirm.Password)
             {
                 pWord = pbConfirm.Password;
-                MessageBox.Show(pWord + " " + passOnLogon.ToString());
+                //MessageBox.Show(pWord + " " + passOnLogon.ToString());
                 if(fName.Count() > 1 && lName.Count() > 1 && uName.Count() > 1 && pWord.Count() > 8)
                 {
                     MessageBoxResult mb = MessageBox.Show("Please verify the information below:", "Confirmation", MessageBoxButton.OKCancel, MessageBoxImage.Question);
@@ -132,9 +132,9 @@ namespace BGC_User_Automation
                     {
                         //a.CreateAdUser(uName, fName, lName, pWord, email, passNeverExpires, cannotChangePW, passOnLogon);
                         //"LDAP://DC=YourCompany,DC=com"
-                        l = ad.GetOUList("LDAP://DC=dcmgllc,DC=local");
-                        string OUCsv = string.Join(",", l.ToArray());
-                        MessageBox.Show(OUCsv);
+                        //l = ad.GetOUList("LDAP://DC=dcmgllc,DC=local");
+                        //string OUCsv = string.Join(",", l.ToArray());
+                        MessageBox.Show(DN);
                     }
                 }
                 else
