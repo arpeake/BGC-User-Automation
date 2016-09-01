@@ -46,7 +46,8 @@ namespace BGC_User_Automation
             string adTest = String.Empty;
             ADStuff ads = new ADStuff();            
             adTest = ads.ADTest(m);
-            
+            DCMGToolbox.ActiveDirectory ad = new ActiveDirectory();
+
             string[] split = adTest.Split(new string[] { "||" },StringSplitOptions.None);
             string pingres = split[0];
             string domain = split[1];            
@@ -56,16 +57,23 @@ namespace BGC_User_Automation
             if (pingres.ToUpper().Trim() == "PINGABLE")
             {
                 txtDomain.UpdateTextBoxTS(domain);
-                txtPingable.UpdateTextBoxTS("True");                
+                txtPingable.UpdateTextBoxTS("True");
+                //build combobox        
+                //"LDAP://DC=YourCompany,DC=com"
+                List<string> l = new List<string>();
+                l = ad.GetOUList("LDAP://DC=dcmgllc,DC=local");
+                cbxOUs.ItemsSource = l;
+                string OUCsv = string.Join(",", l.ToArray());
             }
 
             if (domain.ToUpper().Trim() == "NA")
             {
                 txtDomain.UpdateTextBoxTS("No Domain Found");
                 txtPingable.UpdateTextBoxTS("False");
-
             }
             lblStatusBar.UpdateStatusLabel("Domain lookup task completed.");
+
+            
         }
 
         public void WriteLogs(string logEntry,Logging.LogType lt = Logging.LogType.Message)
@@ -106,7 +114,7 @@ namespace BGC_User_Automation
         private void btnNewUser_Click(object sender, RoutedEventArgs e)
         {
             ADStuff a = new ADStuff();
-            DCMGToolbox.ActiveDirectory ad = new ActiveDirectory();
+            
 
             string fName = txtFirstName.Text;
             string lName = txtLastName.Text;
@@ -117,7 +125,7 @@ namespace BGC_User_Automation
             bool passNeverExpires = chkPwdNeverExpires.IsChecked.Value;
             bool cannotChangePW = chkCannotChangePW.IsChecked.Value;
             string domain = txtDomain.Text;            
-            List<string> l = new List<string>();
+            
 
             
             if (pbPassword.Password == pbConfirm.Password)
@@ -130,11 +138,7 @@ namespace BGC_User_Automation
                     if (mb == MessageBoxResult.OK)
                     {
                         //a.CreateAdUser(uName, fName, lName, pWord, email, passNeverExpires, cannotChangePW, passOnLogon);
-                        //"LDAP://DC=YourCompany,DC=com"
-                        l = ad.GetOUList("LDAP://DC=dcmgllc,DC=local");
-                        cbxOUs.ItemsSource = l;
-                        string OUCsv = string.Join(",", l.ToArray());
-                        MessageBox.Show(OUCsv);
+                                                
                     }
                 }
                 else
