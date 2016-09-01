@@ -133,7 +133,8 @@ namespace BGC_User_Automation
                         //a.CreateAdUser(uName, fName, lName, pWord, email, passNeverExpires, cannotChangePW, passOnLogon);
                         //"LDAP://DC=YourCompany,DC=com"
                         l = ad.GetOUList("LDAP://DC=dcmgllc,DC=local");
-                        MessageBox.Show(l.ToString());
+                        string OUCsv = string.Join(",", l.ToArray());
+                        MessageBox.Show(OUCsv);
                     }
                 }
                 else
