@@ -62,8 +62,7 @@ namespace BGC_User_Automation
                 //"LDAP://DC=YourCompany,DC=com"
                 List<string> l = new List<string>();
                 l = ad.GetOUList("LDAP://DC=dcmgllc,DC=local");
-                cbxOUs.ItemsSource = l;
-                string OUCsv = string.Join(",", l.ToArray());
+                cbxOUs.UpdateCBXDatasource(l);                
             }
 
             if (domain.ToUpper().Trim() == "NA")

@@ -72,5 +72,20 @@ namespace BGC_User_Automation
                 box.Text = text;
             }
         }
+
+        public static void UpdateCBXDatasource(this ComboBox box, List<string> list)
+        {
+            if(box.Dispatcher.Thread != System.Threading.Thread.CurrentThread)
+            {
+                box.Dispatcher.BeginInvoke((Action)(() =>
+                {
+                    box.ItemsSource = list;
+                }));
+            }
+            else
+            {
+                box.ItemsSource = list;
+            }
+        }
     }
 }
