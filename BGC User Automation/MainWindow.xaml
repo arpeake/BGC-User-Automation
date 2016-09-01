@@ -5,8 +5,65 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BGC_User_Automation"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="MainWindow" Height="375.333" Width="525" Background="#FFE5E5E5">
     <Grid>
-        
+        <StatusBar VerticalAlignment="Bottom">
+            <StatusBarItem>
+                <TextBlock x:Name="lblStatusBar" Text="Status:" />
+            </StatusBarItem>
+        </StatusBar>
+        <TabControl x:Name="tabControl" Margin="0,28,0,21.96">
+            <TabItem x:Name="tabNewUser" Header="New User" Margin="-2,-2,-2,0">
+                <Grid Background="#FFE5E5E5" Margin="0">
+                    <Button x:Name="btnNewUser" Content="Create" Margin="207.667,0,208.333,10" VerticalAlignment="Bottom" Click="btnNewUser_Click"/>
+                    <Label x:Name="lblFirstName" Content="FirstName:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="lblLastName" Content="LastName:" HorizontalAlignment="Left" Margin="10,40.96,0,0" VerticalAlignment="Top" d:LayoutOverrides="VerticalAlignment"/>
+                    <TextBox x:Name="txtFirstName" Height="23" Margin="94.334,12.96,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="120"/>
+                    <TextBox x:Name="txtLastName" Height="23" Margin="94.334,43.92,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="120"/>
+                    <Label x:Name="label" Content="UserName:" HorizontalAlignment="Left" Margin="10,71.92,0,0" VerticalAlignment="Top"/>
+                    <TextBox x:Name="txtUserName" Height="23" Margin="94.334,74.88,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="120"/>
+                    <Label x:Name="lblDomain" Content="Domain:" HorizontalAlignment="Right" Margin="0,10,174.006,0" VerticalAlignment="Top" d:LayoutOverrides="HorizontalAlignment"/>
+                    <Label x:Name="lblPingable" Content="Pingable:" Margin="0,40.96,169.761,0" VerticalAlignment="Top" HorizontalAlignment="Right"/>
+                    <TextBox x:Name="txtDomain" BorderThickness="0" HorizontalAlignment="Right" Height="23" Margin="0,15.92,39.673,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Background="#FFE5E5E5" Focusable="False" IsTabStop="False" IsReadOnly="True"/>
+                    <TextBox x:Name="txtPingable" BorderThickness="0" HorizontalAlignment="Right" Height="23" Margin="0,43.92,39.673,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Background="#FFE5E5E5" IsReadOnly="True" Focusable="False" IsTabStop="False"/>
+                    <Label x:Name="label1" Content="Password:" HorizontalAlignment="Left" Margin="10,102.88,0,0" VerticalAlignment="Top"/>
+                    <PasswordBox x:Name="pbPassword" HorizontalAlignment="Left" Margin="94.334,110.88,0,0" Width="120" VerticalAlignment="Top"/>
+                    <PasswordBox x:Name="pbConfirm" HorizontalAlignment="Left" Margin="94.334,0,0,98.613" VerticalAlignment="Bottom" Width="120"/>
+                    <Label x:Name="label2" Content="Confirm:" HorizontalAlignment="Left" Margin="10,0,0,98.613" VerticalAlignment="Bottom"/>
+                    <Label x:Name="lblEmailAddress" Content="E-mail:" HorizontalAlignment="Left" Margin="10,0,0,67.653" VerticalAlignment="Bottom"/>
+                    <TextBox x:Name="txtEmail" HorizontalAlignment="Left" Height="23" Margin="94.334,0,0,67.653" TextWrapping="Wrap" VerticalAlignment="Bottom" Width="120"/>
+                    <CheckBox x:Name="chkPwdNeverExpires" Content="Password Never Expires" HorizontalAlignment="Right" Margin="0,74.88,83.562,0" VerticalAlignment="Top" d:LayoutOverrides="HorizontalAlignment"/>
+                    <CheckBox x:Name="chkChangePWOnLogin" Content="Change Password On Next Logon" HorizontalAlignment="Right" Margin="0,94.978,30.828,0" VerticalAlignment="Top" d:LayoutOverrides="HorizontalAlignment"/>
+                    <CheckBox x:Name="chkCannotChangePW" Content="User Cannot Change Password" HorizontalAlignment="Right" Margin="0,115.076,46.347,128.238" d:LayoutOverrides="Height"/>
+                    <ComboBox x:Name="comboBox" HorizontalAlignment="Right" Margin="0,0,10,101.278" VerticalAlignment="Bottom" Width="218.189"/>
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="tabDebug" Header="Debugging">
+                <Grid Background="#FFE5E5E5" Margin="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Button x:Name="btnDebug" Content="Test" Margin="208.412,0,207.588,10" VerticalAlignment="Bottom" Click="button_Click"/>
+                    <Label x:Name="lblTestOutput" Content="" HorizontalAlignment="Left" Margin="34.851,41.023,0,0" VerticalAlignment="Top"/>
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="tabLog" Header="Log">
+                <Grid Background="#FFE5E5E5" Margin="0">
+                    <RichTextBox x:Name="rtbLog" Margin="10" ScrollViewer.CanContentScroll="True" VerticalScrollBarVisibility="Auto" BorderThickness="1" IsReadOnly="True" TextOptions.TextFormattingMode="Display">
+                        <FlowDocument/>
+                        <RichTextBox.Resources>
+                            <Style TargetType="{x:Type Paragraph}">
+                                <Setter Property="Margin" Value="0"/>
+                            </Style>
+                        </RichTextBox.Resources>
+                    </RichTextBox>
+                </Grid>
+            </TabItem>
+        </TabControl>
+        <Menu x:Name="menu" Height="23" VerticalAlignment="Top">
+            <MenuItem x:Name="mnuFile" Header="File">
+                <MenuItem x:Name="mnuFileExit" Header="Exit" Click="mnuFileExit_Click"/>
+            </MenuItem>
+        </Menu>
     </Grid>
 </Window>
