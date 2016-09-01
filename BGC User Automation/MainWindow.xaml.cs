@@ -61,7 +61,8 @@ namespace BGC_User_Automation
                 //build combobox        
                 //"LDAP://DC=YourCompany,DC=com"
                 List<string> l = new List<string>();
-                l = ad.GetOUList("LDAP://DC=dcmgllc,DC=local");
+                string dn = ad.ConvertStringDomainToDN(domain);
+                l = ad.GetOUList(dn);
                 cbxOUs.UpdateCBXDatasource(l);                
             }
 
