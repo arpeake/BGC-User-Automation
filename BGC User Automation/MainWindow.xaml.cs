@@ -145,8 +145,9 @@ namespace BGC_User_Automation
                         //Build OU or Container string.
                         //Default to Built-in Users
                         string container = cbxOUs.SelectedItem.ToString();
+                        container = container.Trim("LDAP://".ToCharArray());
                         MessageBox.Show(container);
-                        //a.CreateAdUser(uName, fName, lName, pWord,txtDomain.Text,"", email, passNeverExpires, cannotChangePW, passOnLogon);
+                        //a.CreateAdUser(uName, fName, lName, pWord,txtDomain.Text,container, email, passNeverExpires, cannotChangePW, passOnLogon);
                                                 
                     }
                 }
