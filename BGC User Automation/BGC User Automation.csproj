@@ -100,7 +100,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\DCMGToolbox\DCMGToolbox\DCMGToolbox.csproj">
+    <ProjectReference Include="..\..\..\..\..\Perkentha\Documents\Visual Studio 2015\Projects\DCMGToolbox\DCMGToolbox\DCMGToolbox.csproj">
       <Project>{95d6d4bc-5bf1-4117-b5b3-4468b8ae9428}</Project>
       <Name>DCMGToolbox</Name>
     </ProjectReference>

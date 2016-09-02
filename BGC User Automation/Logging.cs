@@ -14,7 +14,7 @@ namespace BGC_User_Automation
             Error,
             Warning,
             Critical,
-            Message,
+            Info,
             Success
         };
     }

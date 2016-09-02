@@ -5,7 +5,7 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BGC User Automation", "BGC User Automation\BGC User Automation.csproj", "{8B6E8BDB-4384-4549-B2B9-2C2442AD1725}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DCMGToolbox", "..\DCMGToolbox\DCMGToolbox\DCMGToolbox.csproj", "{95D6D4BC-5BF1-4117-B5B3-4468B8AE9428}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DCMGToolbox", "..\..\..\..\Perkentha\Documents\Visual Studio 2015\Projects\DCMGToolbox\DCMGToolbox\DCMGToolbox.csproj", "{95D6D4BC-5BF1-4117-B5B3-4468B8AE9428}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
