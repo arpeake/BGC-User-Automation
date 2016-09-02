@@ -142,7 +142,11 @@ namespace BGC_User_Automation
                     MessageBoxResult mb = MessageBox.Show("Please verify the information below:", "Confirmation", MessageBoxButton.OKCancel, MessageBoxImage.Question);
                     if (mb == MessageBoxResult.OK)
                     {
-                        //a.CreateAdUser(uName, fName, lName, pWord, email, passNeverExpires, cannotChangePW, passOnLogon);
+                        //Build OU or Container string.
+                        //Default to Built-in Users
+                        string container = cbxOUs.SelectedItem.ToString();
+                        MessageBox.Show(container);
+                        //a.CreateAdUser(uName, fName, lName, pWord,txtDomain.Text,"", email, passNeverExpires, cannotChangePW, passOnLogon);
                                                 
                     }
                 }

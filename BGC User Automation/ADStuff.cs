@@ -57,10 +57,10 @@ namespace BGC_User_Automation
             return result;
         }
 
-        public void CreateAdUser(string username, string firstName, string lastName, string password, string emailAddress = "", bool passNeverExpires = false, bool userCannotChangePW = false, bool changePWOnNextLogon = false)
+        public void CreateAdUser(string username, string firstName, string lastName, string password,string domain, string ou, string emailAddress = "", bool passNeverExpires = false, bool userCannotChangePW = false, bool changePWOnNextLogon = false)
         {
             ActiveDirectory ad = new ActiveDirectory();
-            ad.CreateUser(username, firstName, lastName, password, emailAddress, passNeverExpires, userCannotChangePW, changePWOnNextLogon);
+            ad.CreateUser(username, firstName, lastName, password,domain,ou, emailAddress, passNeverExpires, userCannotChangePW, changePWOnNextLogon);
         }
 
         public string GetDomainDN(string domain)
